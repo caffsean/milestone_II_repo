@@ -9,8 +9,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 
+<<<<<<< Updated upstream
+=======
 ## MINOR CHANGE TO TEST GITHUB
 
+>>>>>>> Stashed changes
 class viz_engine():
 
     ## Histogrammer takes the dataframe and a column to create a comparative histogram of positive and negative classes. 
