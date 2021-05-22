@@ -9,11 +9,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 
-<<<<<<< Updated upstream
-=======
 ## MINOR CHANGE TO TEST GITHUB
 
->>>>>>> Stashed changes
 class viz_engine():
 
     ## Histogrammer takes the dataframe and a column to create a comparative histogram of positive and negative classes. 
@@ -104,13 +101,13 @@ class viz_engine():
     def word_embeddings_network(model,max_words,min_similarity):
         
         ### Make a network of word embeddings
-                '''
+        '''
         params{
             model: W2V model
             max_words = max number of words to be in the network (selected based on highest frequency)
             min_similarity = Between 0 and 1, -remember smaller corpuses have higher similarity scores
     
-        }
+            }
         '''
         
         common_words = list(model.wv.index2entity[:max_words])
