@@ -123,7 +123,10 @@ class viz_engine():
         dict_0['id'] = 'simple_wiki'
         dict_1['id'] = 'standard_wiki'
     
-        pos = ['CC','CD','DT','IN','JJ','NN','NNP','NNS','PRP','RB','TO','VB','VBD','VBG','VBN','VBP','VBZ']
+        pos = ['CC_count','CD_count','DT_count','IN_count','JJ_count','NN_count','NNP_count','NNS_count','PRP_count','RB_count','TO_count','VB_count','VBD_count','VBG_count','VBN_count','VBP_count','VBZ_count']
+        
+        
+        
         counts = []
         pos_counts_0 = {}
         pos_counts_1 = {}
@@ -490,16 +493,16 @@ class tools():
         dict_0['id'] = 'simple_wiki'
         dict_1['id'] = 'standard_wiki'
     
-        pos = ['CC', 'CD', 'DT', 'EX', 'FW','IN', 'JJ', 'JJR', 'JJS', 'LS', 'MD', 'NN', 'NNS', 'NNP', 'NNPS', 'PDT','POS', 'PRP', 'PRP$', 'RB', 'RBR', 'RBS', 'RP', 'TO', 'UH', 'VB', 'VBD','VBG', 'VBN', 'VBP', 'VBZ', 'WDT', 'WP', 'WP$', 'WRB']
+        pos = ['CC_count', 'CD_count', 'DT_count', 'EX_count', 'FW_count','IN_count', 'JJ_count', 'JJR_count', 'JJS_count', 'LS_count', 'MD_count', 'NN_count', 'NNS_count', 'NNP_count', 'NNPS_count', 'PDT_count','POS_count', 'PRP_count', 'PRP$_count', 'RB_count', 'RBR_count', 'RBS_count', 'RP_count', 'TO_count', 'UH_count', 'VB_count', 'VBD_count','VBG_count', 'VBN_count', 'VBP_count', 'VBZ_count', 'WDT_count', 'WP_count', 'WP$_count', 'WRB_count']
         counts = []
         pos_counts_0 = {}
         pos_counts_1 = {}
     
         
-        other = ['CC', 'CD', 'DT', 'EX', 'FW','IN','LS', 'MD','PDT','POS', 'PRP', 'PRP$', 'RB', 'RBR', 'RBS', 'RP', 'TO', 'UH', 'WDT', 'WP', 'WP$', 'WRB']
-        nouns = ['NN', 'NNS', 'NNP', 'NNPS']
-        adjectives = ['JJ', 'JJR', 'JJS']
-        verbs = ['VB','VBD','VBG', 'VBN', 'VBP', 'VBZ']
+        other = ['CC_count', 'CD_count', 'DT_count', 'EX_count', 'FW_count','IN_count','LS_count', 'MD_count','PDT_count','POS_count', 'PRP_count', 'PRP$_count', 'RB_count', 'RBR_count', 'RBS_count', 'RP_count', 'TO_count', 'UH_count', 'WDT_count', 'WP_count', 'WP$_count', 'WRB_count']
+        nouns = ['NN_count', 'NNS_count', 'NNP_count', 'NNPS_count']
+        adjectives = ['JJ_count', 'JJR_count', 'JJS_count']
+        verbs = ['VB_count','VBD_count','VBG_count', 'VBN_count', 'VBP_count', 'VBZ_count']
     
         for p in pos:
             total = sum(df0[p])
