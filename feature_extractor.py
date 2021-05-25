@@ -18,6 +18,23 @@ from nltk import pos_tag
 
 class feature_mods():
     
+    def choices():
+        return ['length',
+                'average_word_length'
+                'tokens',
+                'token_lemmas',
+                'get_easy_words',
+                'get_hard_word_ratio',
+                'pos_tokens',
+                'add_difficulty_columns',
+                'add_pos_count_columns',
+                'named_entity_counter',
+                'add_punctuation',
+                'create_embeddings',
+                'overrepresented_pos_words',
+                'overrepresented_neg_words'
+               ]
+    
     def length(df):
         '''
         input - pandas df w/ an 'original_text' column
@@ -209,6 +226,8 @@ class feature_mods():
                 pos_count_list.append(counter)
                 pos_ratio_list.append(counter/len(entry))
             df[pos] = pos_ratio_list
+            df['{}_count'.format(pos)] = pos_count_list
+            
             
         return df
     
@@ -240,3 +259,88 @@ class feature_mods():
                     feat_for_sent += embeddings[word]
             features.append(feat_for_sent/count_of_words)
         return pd.DataFrame(features)
+    
+        
+    def overrepresented_pos_words(df, listy):
+        
+        words = set(listy)
+        
+        new_column_overrep = []
+        new_column_ratio = []
+
+        for index in tqdm(range(len(df))):
+            entry = df.preprocessed_tokens.iloc[index]
+            overrep = []
+            #entry = ast.literal_eval(entry)
+            for word in entry:
+                if word in words:
+                    overrep.append(word)
+                else:
+                    None
+            b = len(overrep)
+            new_column_overrep.append(overrep)
+            if len(entry)>0:
+                new_column_ratio.append(b/len(entry))
+            else:
+                new_column_ratio.append(0)
+                
+        df['pos_overrep_ratio'] = new_column_ratio
+        
+        x = df.pos_overrep_ratio.values.reshape(-1, 1) 
+        min_max_scaler = preprocessing.MinMaxScaler()
+        x_scaled = min_max_scaler.fit_transform(x)
+        df['pos_overrep_ratio_norm'] = x_scaled
+        
+        return df
+    
+
+    
+    def overrepresented_neg_words(df, listy):
+        
+        words = set(listy)
+        
+        new_column_overrep = []
+        new_column_ratio = []
+
+        for index in tqdm(range(len(df))):
+            entry = df.preprocessed_tokens.iloc[index]
+            overrep = []
+            #entry = ast.literal_eval(entry)
+            for word in entry:
+                if word in words:
+                    overrep.append(word)
+                else:
+                    None
+            b = len(overrep)
+            new_column_overrep.append(overrep)
+            if len(entry)>0:
+                new_column_ratio.append(b/len(entry))
+                
+            else:
+                new_column_ratio.append(0)
+                
+        df['neg_overrep_ratio'] = new_column_ratio
+        
+        x = df.neg_overrep_ratio.values.reshape(-1, 1) 
+        min_max_scaler = preprocessing.MinMaxScaler()
+        x_scaled = min_max_scaler.fit_transform(x)
+        df['neg_overrep_ratio_norm'] = x_scaled
+        
+        return df
+    
+class tools():
+    def get_numeric_columns_list(df):
+    
+        numeric_columns = []
+    
+    
+        for column in list(df.columns):
+            if dict(df.dtypes)[column] == 'int64':
+                numeric_columns.append(column)
+            elif dict(df.dtypes)[column] == 'float64':
+                numeric_columns.append(column)
+            else:
+                None
+        numeric_columns.remove('label')
+        return numeric_columns
+    
