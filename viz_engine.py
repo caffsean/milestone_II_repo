@@ -439,7 +439,7 @@ class viz_engine():
     
 class tools():
     
-    ### This tool was adapted from the Info Viz II homework - 
+    ### This tool was adapted from Info Viz II - Assignment 3
     
     def rectangleIter(data,width,height,xof=0,yof=0,frame=None,level=-1,parentid=""):
         
@@ -500,6 +500,8 @@ class tools():
                               frame=frame,level=level,parentid=parentid+" → "+rect['label'])
             i = i + 1
         return(frame)
+    
+    ## Tree_dict makes a dictionary of part of speech data that is digestible for the tree-graph generator
     
     def tree_dict(df):
     
