@@ -19,8 +19,7 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 
 class viz_engine():
 
-    ## Histogrammer takes the dataframe and a column to create a comparative histogram of positive and negative classes. 
-    
+      
     def choices():
         return ['histogrammer',
                'float_histogrammer',
@@ -32,6 +31,10 @@ class viz_engine():
                'simple_wordcloud'
                ]
     
+    
+    
+    ## Histogrammer takes the dataframe and a column to create a comparative histogram of positive and negative classes. 
+  
     def histogrammer(df,column_to_compare):
         
         if len(df) >= 5000:
@@ -47,6 +50,10 @@ class viz_engine():
         )
         return chart
 
+    
+    
+    ## Float histogrammer takes the dataframe and a column to create a comparative histogram of positive and negative classes.  
+    
     def float_histogrammer(df,column_to_compare):
         
         if len(df) >= 5000:
@@ -65,6 +72,10 @@ class viz_engine():
             color="label:N"
         )
         return chart
+    
+    
+    
+    ###  Histogrammer takes a word embedding model and a list of words to create a matrix of cosine similarities between words.     
     
     def word_embeddings_matrix(model, common_words):
         '''
@@ -109,7 +120,8 @@ class viz_engine():
         return fig.tight_layout()
     
     
-    
+    ## POS RATIO barchart creates a bar chart of the proportion of either class that consists of a given part of speech. 
+    ## (e.g. Class 0 is 10% nouns, Class 1 is 12% nouns)
     
     
     def pos_ratio_barchart(df):
@@ -124,8 +136,6 @@ class viz_engine():
         dict_1['id'] = 'standard_wiki'
     
         pos = ['CC_count','CD_count','DT_count','IN_count','JJ_count','NN_count','NNP_count','NNS_count','PRP_count','RB_count','TO_count','VB_count','VBD_count','VBG_count','VBN_count','VBP_count','VBZ_count']
-        
-        
         
         counts = []
         pos_counts_0 = {}
@@ -150,9 +160,7 @@ class viz_engine():
         for p in pos:
             total = sum(df1[p])
             pos_counts_1[p] = int(total)/df1_sum
-    
-    
-    
+
         ndf0 = pd.DataFrame(pos_counts_0.values(),columns=['ratio'])
         ndf0['class'] = 0
         ndf0['pos'] = pos_counts_0.keys()
@@ -168,14 +176,14 @@ class viz_engine():
             y=alt.Y('ratio:Q', stack=True),
             color='class:N',
             column='pos:N')
-    
-    
-    
-    
+
         return chart
 
 
-
+     ## adar_staticTreemap creates a treemap of part of speech counts.
+     ## This was adapted from a homework assignment in Info Viz II
+     ## It's not an especially useful visualization, but it's pretty!
+    
 
     def adar_staticTreemap(inputFrame):
     
@@ -217,6 +225,13 @@ class viz_engine():
         layered = alt.layer(level_0_chart,level_1_chart,level_2_chart,text_1,text_0,)
         return layered
     
+     
+        
+     ## adar_staticTreemap creates a treemap of part of speech counts.
+     ## This was adapted from a homework assignment in Info Viz II
+     ## It's not an especially useful visualization, but it's pretty!
+    
+    
     def adar_interactiveTreemap(inputFrame):
         selector = alt.selection_single(fields=['id'])
 
@@ -257,9 +272,10 @@ class viz_engine():
     
     
     
+    ### word_embedding_matrix makes an interactive network graph of word embeddings.    
+    
     def word_embeddings_network(model,max_words,min_similarity,mode):
         
-        ### Make a network of word embeddings
         '''
         params{
             model: W2V model
@@ -268,7 +284,6 @@ class viz_engine():
             mode = 'markers','text','markers+text'
         }
         '''
-        
         common_words = list(model.wv.index2entity[:max_words])
         words, vectors = [], []
         for item in common_words:
@@ -404,6 +419,9 @@ class viz_engine():
     
         return plot(fig, show_link = True, filename = 'result.html') ## Doesn't work in Chrome (Works in Firefox)
     
+    
+    ### Simple wordcloud, makes us a wordcloud
+    
     def simple_wordcloud(df,background_color):
         custom_pipeline = [preprocessing.lowercase,
                            preprocessing.remove_punctuation]
@@ -420,6 +438,8 @@ class viz_engine():
     
     
 class tools():
+    
+    ### This tool was adapted from the Info Viz II homework - 
     
     def rectangleIter(data,width,height,xof=0,yof=0,frame=None,level=-1,parentid=""):
         
