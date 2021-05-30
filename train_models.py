@@ -37,9 +37,9 @@ def MNB(X_train1, y_train1, X_test1, y_test1, alpha = 1.5, fit_prior = True):
     print("Multinomial NB: Score - " + str(score) + " Accuracy - " + str(accuracy) + " Precision - " + str(precision) + " Recall - " + str(recall))
     return clf
 
-def log_reg(X_train1, y_train1, X_test1, y_test1, max_iter = 100, C=1.0):
+def log_reg(X_train1, y_train1, X_test1, y_test1, max_iter = 100, C=1.0, penalty = 'l2', solver = 'lbfgs'):
     '''Train a random logistic regression model and output the model, score, accuracy, precision, and recall'''
-    logreg = LogisticRegression(max_iter=max_iter, C = C,random_state=655,solver='lbfgs').fit(X_train1, y_train1.ravel())
+    logreg = LogisticRegression(max_iter=max_iter, C = C,random_state=655,solver=solver, penalty=penalty).fit(X_train1, y_train1.ravel())
     predicted = logreg.predict(X_test1)
     score = logreg.score(X_train1,y_train1.ravel())
     accuracy = accuracy_score(y_test1.ravel(), predicted)
