@@ -4,7 +4,7 @@
 ### This GitHub repo contains several notebooks, python modules, and data sets used to complete the Milestone II project. Below is a description of the folder, python modules and notebooks pertinent to this project.
 
 #### assets folder
-- Description: a folder which contains all the necessary data except wiki_train_preprocessed5.csv and glove.6B.50d.txt because they were too large to store in GitHub. wiki_train_preprocessed5.csv can be downloaded here: https://drive.google.com/drive/u/0/folders/1xJn3azqIBENWohlluOAmNXG6fbXcalM4 and glove.6B.50d.txt can be downloaded here: http://nlp.stanford.edu/data/glove.6B.zip
+- Description: a folder which contains all the necessary data except wiki_train_preprocessed5.csv, glove.6B.50d.txt, and embeddings_train.csv because they were too large to store in GitHub. wiki_train_preprocessed5.csv and embeddings_train.csv can be downloaded here: https://drive.google.com/drive/u/0/folders/1xJn3azqIBENWohlluOAmNXG6fbXcalM4 and glove.6B.50d.txt can be downloaded here: http://nlp.stanford.edu/data/glove.6B.zip
 - Note: in order for the below notebooks to run all the data must be stored in a folder titled "assets"
 
 #### custom_word_embeddings folder
@@ -44,7 +44,7 @@
 
 #### 3_train_classification_models.ipynb
 - Description: trains the various classification models with different feature representations
-- Data sets: wiki_train_preprocessed5.csv
+- Data sets: wiki_train_preprocessed5.csv, embeddings_train.csv
 - Modules: train_models.py
 
 #### 4_deep_learning.ipynb
