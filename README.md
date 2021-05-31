@@ -8,7 +8,7 @@
 - Note: in order for the below notebooks to run all the data must be stored in a folder titled "assets"
 
 #### custom_word_embeddings folder
-- Description: contains all the customer word embeddings created for data exploration
+- Description: contains all the custom word embeddings created for data exploration
 - Note: in order to use the custom word embedding data it must be stored in a folder titled "custom_word_embeddings"
 
 #### feature_extractor.py
@@ -26,7 +26,7 @@
 #### word_embedder.py
 - Description: contains functions for creating custom word embeddings
 - Notebooks: 1_data_exploration.ipynb
-- Note: does not need to be used since the custom word embeddings were already created
+- Note: does not need to be used since the custom word embeddings were already created and stored in the custom_word_embeddings folder
 
 #### unsupervised_engine.py
 - Description: contains functions to perform topic modeling
