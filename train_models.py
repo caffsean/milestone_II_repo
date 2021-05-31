@@ -11,7 +11,6 @@ pio.renderers.default='notebook'
 from sklearn.metrics import plot_confusion_matrix
 import matplotlib.pyplot as plt
 from sklearn.metrics import recall_score, accuracy_score, precision_score, f1_score
-from sklearn.feature_selection import SequentialFeatureSelector # need version 0.24 of scikit-learn
 
 
 def knn(X_train1, y_train1, X_test1, y_test1, neighbors = 5):
@@ -102,15 +101,3 @@ def grid_search_features(features, X_train, y_train, X_test, y_test, n_estimator
         print('Top {} features'.format(count))
         random_forest(X_train_, y_train, X_test_, y_test,n_estimators=n_estimators,max_depth=max_depth)
         print()
-        
-def tune_threshold(trained_model, X_test, y_test, threshold = .5):
-    '''Tweak the threshold to see if can increase accuracy'''
-    probs = trained_model.predict_proba(X_test)[:,1]
-    predictions = []
-    for each in probs:
-        if each > threshold:
-             predictions.append(1)
-        else:
-            predictions.append(0)
-    accuracy = accuracy_score(y_test.ravel(), predictions)
-    return accuracy
