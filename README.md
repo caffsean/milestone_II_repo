@@ -1,7 +1,7 @@
 # Milestone II: Wikipedia Classification Spring 2021
 ## By Sean Cafferty and Laura Stagnaro
 
-### This GitHub repo contains several notebooks, python modules, and data sets used to complete the Milestone II project. Below is a description of the folder, python modules and notebooks pertinent to this project.
+### This GitHub repo contains several notebooks, python modules, and data sets used to complete the Milestone II project. Below is a description of the folders, python modules and notebooks pertinent to this project.
 
 #### assets folder
 - Description: a folder which contains all the necessary data except wiki_train_preprocessed5.csv, glove.6B.50d.txt, and embeddings_train.csv because they were too large to store in GitHub. wiki_train_preprocessed5.csv and embeddings_train.csv can be downloaded here: https://drive.google.com/drive/u/0/folders/1xJn3azqIBENWohlluOAmNXG6fbXcalM4 and glove.6B.50d.txt can be downloaded here: http://nlp.stanford.edu/data/glove.6B.zip
